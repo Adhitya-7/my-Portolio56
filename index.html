@@ -6,6 +6,37 @@
   <title>Adhitya Raman | Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
+<script>
+let lastScrollTop = 0;
+const video = document.getElementById("bg-video");
+
+// Scroll effect power-up
+window.addEventListener("scroll", () => {
+  const scrollValue = window.scrollY;
+
+  // Zoom video like power rising
+  video.style.transform = `scale(${1 + scrollValue / 2000})`;
+
+  // Aura glow
+  document.body.style.boxShadow = `
+    0 0 ${20 + scrollValue / 8}px rgba(255,255,255,0.4)
+  `;
+
+  // Lightning on fast scroll
+  let st = window.pageYOffset || document.documentElement.scrollTop;
+  if (st > lastScrollTop + 20 || st < lastScrollTop - 20) {
+    if (Math.random() > 0.6) { 
+      document.body.classList.add("lightning-flash");
+      setTimeout(() => {
+        document.body.classList.remove("lightning-flash");
+      }, 120);
+    }
+  }
+  lastScrollTop = st <= 0 ? 0 : st;
+});
+</script>
+
+
 <body>
   <body>
   <!-- ⚡ GEAR 5 LOADER -->
@@ -47,6 +78,7 @@
 </script>
 </body>
 </html>
+
 
 
 
