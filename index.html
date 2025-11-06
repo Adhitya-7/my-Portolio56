@@ -1,85 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Adhitya Raman | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<script>
-let lastScrollTop = 0;
-const video = document.getElementById("bg-video");
-
-// Scroll effect power-up
-window.addEventListener("scroll", () => {
-  const scrollValue = window.scrollY;
-
-  // Zoom video like power rising
-  video.style.transform = `scale(${1 + scrollValue / 2000})`;
-
-  // Aura glow
-  document.body.style.boxShadow = `
-    0 0 ${20 + scrollValue / 8}px rgba(255,255,255,0.4)
-  `;
-
-  // Lightning on fast scroll
-  let st = window.pageYOffset || document.documentElement.scrollTop;
-  if (st > lastScrollTop + 20 || st < lastScrollTop - 20) {
-    if (Math.random() > 0.6) { 
-      document.body.classList.add("lightning-flash");
-      setTimeout(() => {
-        document.body.classList.remove("lightning-flash");
-      }, 120);
-    }
-  }
-  lastScrollTop = st <= 0 ? 0 : st;
-});
-</script>
-
-
 <body>
-  <body>
+
   <!-- ⚡ GEAR 5 LOADER -->
   <div id="loader">
     <div class="loader-ring"></div>
     <h2 class="loader-text">Gear 5 Awakening...</h2>
   </div>
 
-  <!-- Your site starts here -->
-  <nav>...</nav>
-<video autoplay muted loop playsinline id="bg-video">
-  <source src="Eiffel.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-    
-  </div>
+  <!-- 🎬 Background Video -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="Eiffel.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
 
+  <!-- 🧭 Navigation -->
   <nav>
     <ul>
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="about.html">About Me</a></li>
       <li><a href="works.html">My Works</a></li>
       <li><a href="hobbies.html">Hobbies</a></li>
       <li><a href="contact.html">Contact</a></li>
-
-
     </ul>
   </nav>
 
+  <!-- 🏠 Hero Section -->
   <section>
-    <h1>Hey, i'm Adhitya Raman</h1>
-    <p>Welcome to my Portfolio you can find everthing in this  ✨</p>
+    <h1>Hey, I'm Adhitya Raman</h1>
+    <p>Welcome to my Portfolio ✨</p>
   </section>
+
+  <!-- ⚙️ Scroll + Aura Script -->
   <script>
   window.addEventListener("load", () => {
     document.body.classList.add("loaded");
   });
-</script>
+
+  const video = document.getElementById("bg-video");
+  let lastScrollTop = 0;
+
+  window.addEventListener("scroll", () => {
+    if (!video) return;
+    const scrollValue = window.scrollY;
+
+    // Zoom video effect
+    video.style.transform = `scale(${1 + scrollValue / 2000})`;
+
+    // Aura glow
+    document.body.style.boxShadow = `0 0 ${20 + scrollValue / 8}px rgba(255,255,255,0.4)`;
+
+    // Lightning flicker
+    let st = window.pageYOffset || document.documentElement.scrollTop;
+    if (Math.abs(st - lastScrollTop) > 20 && Math.random() > 0.6) {
+      document.body.classList.add("lightning-flash");
+      setTimeout(() => document.body.classList.remove("lightning-flash"), 120);
+    }
+    lastScrollTop = st <= 0 ? 0 : st;
+  });
+  </script>
+
 </body>
 </html>
-
-
-
-
-
-
