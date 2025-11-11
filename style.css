@@ -56,7 +56,7 @@ nav a.active::after {
   width: 100%;
 }
 
-/* ===== HOME PAGE VIDEO (scrollable hero) ===== */
+/* ===== HOME PAGE VIDEO (Eiffel — crisp scroll section) ===== */
 .video-section {
   width: 100%;
   height: 60vh;
@@ -64,15 +64,16 @@ nav a.active::after {
   position: relative;
 }
 
-.video-section video {
+#hero-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   border-radius: 0;
+  filter: brightness(0.9); /* just a bit darker for contrast */
 }
 
-/* ===== UNIVERSAL BACKGROUND VIDEO (blurred for About page) ===== */
+/* ===== ABOUT PAGE VIDEO (Gear 5 — subtle blur cinematic) ===== */
 #bg-video {
   position: fixed;
   top: 0;
@@ -81,7 +82,7 @@ nav a.active::after {
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  filter: blur(6px) brightness(0.6); /* adds cinematic blur */
+  filter: blur(2.5px) brightness(0.7); /* reduced blur, nice clarity */
   animation: slowZoom 20s ease-in-out infinite alternate;
 }
 
@@ -101,7 +102,7 @@ nav a.active::after {
   border-radius: 20px;
   backdrop-filter: blur(15px) saturate(120%);
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 40px rgba(0, 191, 255, 0.2);
+  box-shadow: 0 0 40px rgba(0, 191, 255, 0.25);
   z-index: 2;
   animation: fadeIn 1.5s ease-in forwards;
 }
