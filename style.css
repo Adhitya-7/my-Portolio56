@@ -66,8 +66,8 @@ nav a.active::after { width: 100%; }
   object-fit: cover;
   display: block;
   border-radius: 0;
-  filter: none !important;         /* no dim/blur */
-  transform: none !important;      /* no scale */
+  filter: none !important;
+  transform: none !important;
 }
 
 /* Optional readable overlay for the hero video */
@@ -79,7 +79,7 @@ nav a.active::after { width: 100%; }
   pointer-events: none;
 }
 
-/* ===== ABOUT PAGE VIDEO (Gear 5 — full background, clear) ===== */
+/* ===== ABOUT PAGE VIDEO (Gear 5 — clear cinematic) ===== */
 #bg-video {
   position: fixed;
   top: 0; left: 0;
@@ -87,18 +87,17 @@ nav a.active::after { width: 100%; }
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  filter: none !important;         /* remove any blur/dim */
-  transform: none !important;      /* stop zoom that softens detail */
+  filter: none !important;       /* unblurred */
+  transform: none !important;
   will-change: auto;
 }
 
-/* Optional readable overlay for background pages */
+/* Optional semi-transparent overlay for readability */
 .page-overlay {
   position: fixed;
   inset: 0;
+  background: rgba(0, 0, 0, 0.3); /* tweak 0.2–0.4 if text too bright */
   z-index: -1;
-  background: rgba(0,0,0,0.25);    /* tweak 0–0.4 as needed */
-  pointer-events: none;
 }
 
 /* ===== GLASS EFFECT FOR TEXT CONTENT ===== */
@@ -110,8 +109,8 @@ nav a.active::after { width: 100%; }
   color: white;
   text-align: center;
   border-radius: 20px;
-  backdrop-filter: blur(15px) saturate(120%);
-  background: rgba(0, 0, 0, 0.30); /* keep text readable; video stays sharp */
+  backdrop-filter: blur(12px) saturate(130%);
+  background: rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 40px rgba(0, 191, 255, 0.25);
   z-index: 2;
   animation: fadeIn 1.5s ease-in forwards;
@@ -140,25 +139,32 @@ nav a.active::after { width: 100%; }
 
 /* ===== LOADER ===== */
 #loader {
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 0;
   background: radial-gradient(circle at center, #000000 50%, #0a0a0a);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   z-index: 9999;
   transition: opacity 1s ease, visibility 1s ease;
 }
 
 .loader-ring {
   width: 100px; height: 100px;
-  border: 5px solid #444; border-top: 5px solid #00bfff;
+  border: 5px solid #444;
+  border-top: 5px solid #00bfff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 20px;
 }
 
 .loader-text {
-  color: #00bfff; font-size: 1.5rem;
-  letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
+  color: #00bfff;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
   animation: pulse 1.5s infinite;
 }
 
@@ -171,42 +177,3 @@ nav a.active::after { width: 100%; }
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
-/* ===== ABOUT PAGE VIDEO (Gear 5 — clear cinematic) ===== */
-#bg-video {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-  filter: none !important; /* fully unblurred */
-  transform: none !important;
-}
-
-/* Optional semi-transparent overlay for readability */
-.page-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3); /* darkens just enough for readable text */
-  z-index: -1;
-}
-
-/* 🧊 Glass effect for text area */
-.glass-card {
-  position: relative;
-  margin: 10vh auto;
-  padding: 60px 40px;
-  max-width: 800px;
-  color: white;
-  text-align: center;
-  border-radius: 20px;
-  backdrop-filter: blur(12px) saturate(130%);
-  background: rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 40px rgba(0, 191, 255, 0.25);
-  z-index: 2;
-  animation: fadeIn 1.5s ease-in forwards;
-}
-
-
-
