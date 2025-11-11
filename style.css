@@ -171,3 +171,42 @@ nav a.active::after { width: 100%; }
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ===== ABOUT PAGE VIDEO (Gear 5 — clear cinematic) ===== */
+#bg-video {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: none !important; /* fully unblurred */
+  transform: none !important;
+}
+
+/* Optional semi-transparent overlay for readability */
+.page-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3); /* darkens just enough for readable text */
+  z-index: -1;
+}
+
+/* 🧊 Glass effect for text area */
+.glass-card {
+  position: relative;
+  margin: 10vh auto;
+  padding: 60px 40px;
+  max-width: 800px;
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+  backdrop-filter: blur(12px) saturate(130%);
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 40px rgba(0, 191, 255, 0.25);
+  z-index: 2;
+  animation: fadeIn 1.5s ease-in forwards;
+}
+
+
+
