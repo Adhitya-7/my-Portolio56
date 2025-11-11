@@ -36,9 +36,7 @@ nav a {
   transition: color 0.3s ease;
 }
 
-nav a:hover {
-  color: #ffdd57;
-}
+nav a:hover { color: #ffdd57; }
 
 nav a::after {
   content: "";
@@ -52,9 +50,7 @@ nav a::after {
 }
 
 nav a:hover::after,
-nav a.active::after {
-  width: 100%;
-}
+nav a.active::after { width: 100%; }
 
 /* ===== HOME PAGE VIDEO (Eiffel — clear and crisp) ===== */
 .video-section {
@@ -70,25 +66,39 @@ nav a.active::after {
   object-fit: cover;
   display: block;
   border-radius: 0;
-  filter: brightness(0.9); /* keep a bit darker for text readability */
+  filter: none !important;         /* no dim/blur */
+  transform: none !important;      /* no scale */
+}
+
+/* Optional readable overlay for the hero video */
+.video-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.35));
+  pointer-events: none;
 }
 
 /* ===== ABOUT PAGE VIDEO (Gear 5 — full background, clear) ===== */
 #bg-video {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  filter: brightness(0.65); /* removed blur, just darken a bit for contrast */
-  animation: slowZoom 20s ease-in-out infinite alternate;
+  filter: none !important;         /* remove any blur/dim */
+  transform: none !important;      /* stop zoom that softens detail */
+  will-change: auto;
 }
 
-@keyframes slowZoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.08); }
+/* Optional readable overlay for background pages */
+.page-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0,0,0,0.25);    /* tweak 0–0.4 as needed */
+  pointer-events: none;
 }
 
 /* ===== GLASS EFFECT FOR TEXT CONTENT ===== */
@@ -101,7 +111,7 @@ nav a.active::after {
   text-align: center;
   border-radius: 20px;
   backdrop-filter: blur(15px) saturate(120%);
-  background: rgba(0, 0, 0, 0.3); /* slightly darker background for contrast */
+  background: rgba(0, 0, 0, 0.30); /* keep text readable; video stays sharp */
   box-shadow: 0 0 40px rgba(0, 191, 255, 0.25);
   z-index: 2;
   animation: fadeIn 1.5s ease-in forwards;
@@ -118,7 +128,7 @@ nav a.active::after {
   margin-bottom: 1.2rem;
 }
 
-/* ===== LIGHTNING + AURA EFFECTS ===== */
+/* ===== LIGHTNING + AURA EFFECTS (optional) ===== */
 @keyframes lightning {
   0% { filter: brightness(1); }
   20% { filter: brightness(2.2) contrast(1.5); }
@@ -126,63 +136,38 @@ nav a.active::after {
   60% { filter: brightness(2) contrast(1.3); }
   100% { filter: brightness(1); }
 }
-
-.lightning-flash {
-  animation: lightning 0.2s ease;
-}
+.lightning-flash { animation: lightning 0.2s ease; }
 
 /* ===== LOADER ===== */
 #loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed; inset: 0;
   background: radial-gradient(circle at center, #000000 50%, #0a0a0a);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
   z-index: 9999;
   transition: opacity 1s ease, visibility 1s ease;
 }
 
 .loader-ring {
-  width: 100px;
-  height: 100px;
-  border: 5px solid #444;
-  border-top: 5px solid #00bfff;
+  width: 100px; height: 100px;
+  border: 5px solid #444; border-top: 5px solid #00bfff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 20px;
 }
 
 .loader-text {
-  color: #00bfff;
-  font-size: 1.5rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: bold;
+  color: #00bfff; font-size: 1.5rem;
+  letter-spacing: 2px; text-transform: uppercase; font-weight: bold;
   animation: pulse 1.5s infinite;
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.1); }
-}
-
-.loaded #loader {
-  opacity: 0;
-  visibility: hidden;
-}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.6;transform:scale(1.1);} }
+.loaded #loader { opacity: 0; visibility: hidden; }
 
 /* ===== FADE IN EFFECT ===== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
