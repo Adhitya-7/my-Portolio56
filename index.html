@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Adhitya Raman | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body class="home-page">
 
-  <!-- ⚡ GEAR 5 LOADER -->
+  <!-- Loader -->
   <div id="loader">
     <div class="loader-ring"></div>
     <h2 class="loader-text">Gear 5 Awakening...</h2>
   </div>
 
-  <!-- 🎬 Fullscreen Background Video -->
-  <video autoplay muted loop playsinline id="hero-video">
+  <!-- Fullscreen hero video -->
+  <video autoplay muted loop playsinline id="hero-video" preload="auto">
     <source src="Eiffel.mp4" type="video/mp4" />
+    Your browser doesn't support video.
   </video>
 
-  <!-- 🧭 Navigation -->
+  <!-- Page flash (used for page transitions) -->
+  <div id="page-flash" aria-hidden="true"></div>
+
+  <!-- Navigation -->
   <nav>
     <ul>
       <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About Me</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="works.html">My Works</a></li>
       <li><a href="hobbies.html">Hobbies</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- 🏠 Centered Hero Content -->
+  <!-- Center hero content -->
   <div class="hero-content">
-    <h1>Hey, I'm <span class="highlight">Adhitya Raman</span></h1>
+    <h1 class="text-shine">Hey, I'm <span class="highlight">Adhitya Raman</span></h1>
     <p>Welcome to my Portfolio ✨</p>
   </div>
 
-  <script>
-    window.addEventListener("load", () => {
-      document.body.classList.add("loaded");
-    });
-  </script>
+  <!-- optional audio element: place a whoosh mp3 in root and uncomment if you have one -->
+  <!-- <audio id="scroll-audio" src="whoosh.mp3" preload="auto"></audio> -->
 
+  <script src="script.js" defer></script>
 </body>
 </html>
