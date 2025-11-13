@@ -14,15 +14,15 @@
   <div class="loader-text">Loading...</div>
 </div>
 
-<!-- Hero Video -->
+<!-- Hero Video (behind everything) -->
 <div class="video-section">
   <video autoplay muted loop playsinline id="hero-video">
     <source src="Eiffel.mp4" type="video/mp4">
   </video>
 </div>
 
-<!-- Navigation -->
-<nav>
+<!-- Navigation (on top of video) -->
+<nav style="z-index: 10;">
   <ul>
     <li><a class="active" href="index.html">Home</a></li>
     <li><a href="about.html">About Me</a></li>
@@ -32,8 +32,8 @@
   </ul>
 </nav>
 
-<!-- Hero Text -->
-<div class="hero-content">
+<!-- Hero Text (on top of video) -->
+<div class="hero-content" style="z-index: 10; position: relative;">
   <h1>Hey, I'm <span class="highlight">Adhitya Raman</span></h1>
   <p>Welcome to my Portfolio ✨</p>
 </div>
