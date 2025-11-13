@@ -3,46 +3,182 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Adhitya Raman | Portfolio</title>
+  <title>About Me | Adhitya Raman</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="home-page">
+<body>
 
-  <!-- Loader -->
-  <div id="loader">
-    <div class="loader-ring"></div>
-    <h2 class="loader-text">Gear 5 Awakening...</h2>
-  </div>
-
-  <!-- Fullscreen hero video -->
-  <video autoplay muted loop playsinline id="hero-video" preload="auto">
-    <source src="Eiffel.mp4" type="video/mp4" />
+  <!-- Background video -->
+  <video autoplay muted loop playsinline id="bg-video" preload="auto">
+    <source src="gear5_preview.mp4" type="video/mp4" />
     Your browser doesn't support video.
   </video>
 
-  <!-- Page flash (used for page transitions) -->
-  <div id="page-flash" aria-hidden="true"></div>
+  <!-- semi-transparent overlay -->
+  <div class="page-overlay"></div>
+
+  <!-- page flash -->
+  <div id="page-flash"></div>
 
   <!-- Navigation -->
   <nav>
     <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About Me</a></li>
       <li><a href="works.html">My Works</a></li>
       <li><a href="hobbies.html">Hobbies</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Center hero content -->
-  <div class="hero-content">
-    <h1 class="text-shine">Hey, I'm <span class="highlight">Adhitya Raman</span></h1>
-    <p>Welcome to my Portfolio ✨</p>
-  </div>
+  <!-- Glass card -->
+  <section class="glass-card">
+    <h1 class="text-shine">Greetings</h1>
+    <p>Hey there 👋 I'm <strong>Adhitya Raman</strong> — an aspiring cloud architect exploring AWS and GCP. I love solving problems and building scalable, secure solutions.</p>
+    <p>I'm passionate about cloud computing, UI/UX design, and cybersecurity. I’ve built a <strong>UAV Drone System</strong> using a hybrid algorithm model for secure communication where hijacking is very hard.</p>
+    <p>Outside of tech, I enjoy reading, music, meditation and visiting temples for peace.</p>
+  </section>
 
-  <!-- optional audio element: place a whoosh mp3 in root and uncomment if you have one -->
-  <!-- <audio id="scroll-audio" src="whoosh.mp3" preload="auto"></audio> -->
 
-  <script src="script.js" defer></script>
+  <!-- ===========================
+       INLINE FULL ANIME SCRIPT 
+       =========================== -->
+<script>
+(() => {
+  const BODY = document.body;
+  const q = s => document.querySelector(s);
+  const qa = s => Array.from(document.querySelectorAll(s));
+
+  /* LOADER */
+  window.addEventListener('load', () => {
+    BODY.classList.add('loaded');
+    setTimeout(() => {
+      const loader = q('#loader');
+      if (loader) loader.style.display = 'none';
+    }, 700);
+  });
+
+  /* PAGE FLASH TRANSITION */
+  const pageFlash = (color = '#ffffff', duration = 420) => {
+    let flash = q('#page-flash');
+    if (!flash) {
+      flash = document.createElement('div');
+      flash.id = 'page-flash';
+      document.body.appendChild(flash);
+    }
+    flash.style.background = color;
+    flash.classList.add('flash-on');
+    setTimeout(() => flash.classList.remove('flash-on'), duration);
+  };
+
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a) return;
+
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('#') || a.target === '_blank')
+      return;
+
+    e.preventDefault();
+    pageFlash('#ffffff', 350);
+    setTimeout(() => window.location.href = href, 350);
+  });
+
+  /* PARALLAX VIDEO EFFECT */
+  const initParallax = () => {
+    const vids = qa('#hero-video, #bg-video');
+    if (!vids.length) return;
+
+    document.addEventListener('mousemove', (ev) => {
+      const cx = innerWidth / 2, cy = innerHeight / 2;
+      const dx = (ev.clientX - cx) / cx;
+      const dy = (ev.clientY - cy) / cy;
+
+      vids.forEach(v => {
+        v.style.transform = `translate(${dx * 8}px, ${dy * 6}px) scale(1.02)`;
+      });
+    });
+
+    document.addEventListener('mouseleave', () => {
+      vids.forEach(v => v.style.transform = 'translate(0,0) scale(1)');
+    });
+  };
+
+  /* CLICK SPARKS */
+  const makeSpark = (x, y) => {
+    const s = document.createElement('span');
+    s.className = 'spark';
+    s.style.left = x + 'px';
+    s.style.top = y + 'px';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 700);
+  };
+
+  document.addEventListener('click', e => makeSpark(e.clientX, e.clientY));
+
+  /* GLASS CARD PULSE */
+  const pulseGlass = () => {
+    const cards = qa('.glass-card, section');
+    if (!cards.length) return;
+
+    setInterval(() => {
+      cards.forEach(c => {
+        c.classList.add('glass-pulse');
+        setTimeout(() => c.classList.remove('glass-pulse'), 800);
+      });
+    }, 2200 + Math.random() * 700);
+  };
+
+  /* NAV ELECTRIC FLICKER */
+  const initNavElectric = () => {
+    qa('nav a').forEach(a => {
+      a.addEventListener('mouseenter', () => {
+        a.classList.add('electric');
+        setTimeout(() => a.classList.remove('electric'), 500);
+      });
+    });
+  };
+
+  /* INITIALIZE EVERYTHING */
+  const init = () => {
+    initParallax();
+    pulseGlass();
+    initNavElectric();
+
+    /* spark fallback CSS */
+    const css = document.createElement('style');
+    css.textContent = `
+      .spark {
+        position: fixed;
+        width: 8px; height: 8px;
+        pointer-events: none;
+        border-radius: 50%;
+        background: radial-gradient(circle, #fff 0%, #00bfff 70%, transparent 100%);
+        transform: translate(-50%, -50%);
+        animation: sparkAnim 0.6s ease-out forwards;
+        box-shadow: 0 0 10px rgba(0,191,255,0.9);
+        z-index: 999999;
+      }
+      @keyframes sparkAnim {
+        0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        100% { opacity: 0; transform: translate(-50%, -150%) scale(0.4); }
+      }
+      #page-flash {
+        position: fixed; inset: 0;
+        pointer-events: none; opacity: 0;
+        transition: opacity .2s ease;
+        z-index: 99998;
+      }
+      #page-flash.flash-on { opacity: 1; }
+    `;
+    document.head.appendChild(css);
+  };
+
+  if (document.readyState === 'complete') init();
+  else document.addEventListener('DOMContentLoaded', init);
+
+})();
+</script>
+
 </body>
 </html>
