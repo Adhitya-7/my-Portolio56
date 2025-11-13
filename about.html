@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About Me | Adhitya Raman</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-  <!-- 🎬 Gear 5 Background Video -->
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="gear5_preview.mp4" type="video/mp4">
-    Your browser does not support the video tag.
+  <!-- Background video -->
+  <video autoplay muted loop playsinline id="bg-video" preload="auto">
+    <source src="gear5_preview.mp4" type="video/mp4" />
+    Your browser doesn't support video.
   </video>
 
-  <!-- 🕶 Optional Overlay (for readability without blur) -->
-  <div class="page-overlay"></div>
+  <!-- semi-transparent overlay for reading -->
+  <div class="page-overlay" aria-hidden="true"></div>
 
-  <!-- 🧭 Navigation -->
+  <!-- page-flash for transitions -->
+  <div id="page-flash" aria-hidden="true"></div>
+
+  <!-- Navigation -->
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -30,16 +31,14 @@
     </ul>
   </nav>
 
-  <!-- 🧠 About Section -->
+  <!-- Glass card -->
   <section class="glass-card">
-    <h1>Greetings</h1>
-
+    <h1 class="text-shine">Greetings</h1>
     <p>Hey there 👋 I'm <strong>Adhitya Raman</strong> — an aspiring cloud architect exploring AWS and GCP. I love solving problems and building scalable, secure solutions.</p>
-
-    <p>I'm passionate about cloud computing, UI/UX design, and cybersecurity. I’ve built a <strong>UAV Drone System</strong> that combines three algorithms into a hybrid model for secure communication — making drone hijacking far harder compared to traditional methods.</p>
-
+    <p>I'm passionate about cloud computing, UI/UX design, and cybersecurity. I’ve built a <strong>UAV Drone System</strong> that combines three algorithms into a hybrid model for secure communication — making drone hijacking far harder.</p>
     <p>Outside of tech, I enjoy reading, listening to music across genres, and spending quiet time meditating or visiting temples for peace of mind.</p>
   </section>
 
+  <script src="script.js" defer></script>
 </body>
 </html>
