@@ -8,15 +8,17 @@
 
 <body class="home-page">
 
-<!-- Background Video -->
-<video autoplay muted loop playsinline id="hero-video">
-  <source src="Eiffel.mp4" type="video/mp4">
-</video>
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">Loading...</div>
+</div>
 
-<!-- Glass Card -->
-<div class="hero-card">
-  <h1>Hey, I'm <span class="highlight">Adhitya Raman</span></h1>
-  <p>Welcome to my Portfolio ✨</p>
+<!-- Background Video -->
+<div class="video-section">
+  <video autoplay muted loop playsinline id="hero-video">
+    <source src="Eiffel.mp4" type="video/mp4">
+  </video>
 </div>
 
 <!-- Navigation -->
@@ -29,6 +31,18 @@
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
+
+<!-- Glass Card -->
+<div class="hero-content">
+  <h1>Hey, I'm <span class="highlight">Adhitya Raman</span></h1>
+  <p>Welcome to my Portfolio ✨</p>
+</div>
+
+<script>
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded");
+});
+</script>
 
 </body>
 </html>
