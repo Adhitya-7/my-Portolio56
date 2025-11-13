@@ -1,245 +1,66 @@
 /* ===========================================================
    GLOBAL SETTINGS
    =========================================================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Montserrat',sans-serif;color:white;background:#000;overflow-x:hidden;transition:box-shadow .2s ease,opacity .5s ease}
+body{opacity:0}
+body.loaded{opacity:1}
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-  background: #000;
-  overflow-x: hidden;
-  transition: box-shadow 0.2s ease, opacity 0.5s ease;
-}
+/* NAVBAR */
+nav{position:fixed;width:100%;top:0;z-index:100;background:rgba(0,0,0,.55);backdrop-filter:blur(10px);padding:1rem 0;transition:.3s}
+nav ul{display:flex;justify-content:center;gap:2rem;list-style:none;margin:0;padding:0}
+nav a{color:white;text-decoration:none;font-weight:700;letter-spacing:.5px;position:relative;transition:.3s}
+nav a:hover{color:#00bfff}
+nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:#00bfff;transition:width .4s}
+nav a:hover::after,nav a.active::after{width:100%}
 
-/* ===========================================================
-   PAGE TRANSITION (FADE EFFECT)
-   =========================================================== */
-body {
-  opacity: 0;
-}
+/* FULLSCREEN HERO (index) */
+.home-page{height:100vh;overflow:hidden}
+#hero-video{position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:none!important;transform:none!important}
+.hero-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:2;animation:fadeIn 1.6s}
+.hero-content h1{font-size:3.2rem;margin-bottom:.5rem}
+.hero-content p{font-size:1.4rem;opacity:.9}
+.highlight{color:#00bfff;text-shadow:0 0 12px rgba(0,191,255,.7);animation:pulseGlow 2s infinite alternate}
+@keyframes pulseGlow{from{text-shadow:0 0 5px rgba(0,191,255,.6)}to{text-shadow:0 0 18px rgba(0,191,255,1)}}
 
-body.loaded {
-  opacity: 1;
-}
+/* ABOUT BACKGROUND */
+#bg-video{position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:none!important;transform:none!important}
+.page-overlay{position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:-1}
 
-/* ===========================================================
-   NAVIGATION BAR
-   =========================================================== */
-nav {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 100;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(10px);
-  padding: 1rem 0;
-  transition: 0.3s ease;
-}
+/* GLASS SECTIONS */
+section,.glass-card{max-width:800px;margin:12vh auto;padding:60px 40px;border-radius:20px;text-align:center;background:rgba(15,15,15,.3);backdrop-filter:blur(15px) saturate(130%);box-shadow:0 0 40px rgba(0,191,255,.25);animation:fadeInUp 1.4s ease}
+section h1{font-size:3rem;margin-bottom:1.4rem}section p{font-size:1.2rem;line-height:1.6}
 
-nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  list-style: none;
-}
+/* LIGHTNING animation class toggle */
+@keyframes lightning{0%{filter:brightness(1)}30%{filter:brightness(2.5) contrast(1.6)}60%{filter:brightness(1)}90%{filter:brightness(2) contrast(1.3)}100%{filter:brightness(1)}}
+.lightning-flash{animation:lightning .25s ease}
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 700;
-  letter-spacing: .5px;
-  position: relative;
-  transition: 0.3s ease;
-}
+/* LOADER */
+#loader{position:fixed;inset:0;background:radial-gradient(circle,#000 50%,#0a0a0a);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 1s,visibility 1s}
+.loader-ring{width:110px;height:110px;border:6px solid #333;border-top:6px solid #00bfff;border-radius:50%;animation:spin 1.1s linear infinite;margin-bottom:20px}
+.loader-text{font-size:1.6rem;letter-spacing:2px;color:#00bfff;text-shadow:0 0 10px #00d9ff;animation:pulse 1.6s infinite}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.loaded #loader{opacity:0;visibility:hidden}
 
-/* GOLD GLOW hover */
-nav a:hover {
-  color: #ffd44f;
-  text-shadow: 0 0 10px #ffd44f, 0 0 20px #ffae00;
-}
+/* FLASH OVERLAY (page transition) */
+#page-flash{position:fixed;inset:0;z-index:99998;pointer-events:none;opacity:0;transition:opacity .25s}
+#page-flash.flash-on{opacity:1;transition:opacity .18s}
 
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0; bottom: -6px;
-  width: 0%;
-  height: 2px;
-  background: #00bfff;
-  transition: width 0.4s;
-}
+/* SPARK style (in case JS couldn't inject) fallback */
+.spark{position:fixed;pointer-events:none;width:8px;height:8px;border-radius:50%;background:radial-gradient(circle,#fff 0%,#00bfff 60%,transparent 100%);transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(0,191,255,.9);z-index:9999}
 
-nav a:hover::after,
-nav a.active::after {
-  width: 100%;
-}
+/* GLASS PULSE (added by JS) */
+.glass-pulse{animation:glassPulse .9s ease}
+@keyframes glassPulse{0%{box-shadow:0 0 20px rgba(0,191,255,.1)}50%{box-shadow:0 0 56px rgba(0,191,255,.32)}100%{box-shadow:0 0 20px rgba(0,191,255,.12)}}
 
-/* ===========================================================
-   FULLSCREEN HERO (INDEX PAGE)
-   =========================================================== */
-.home-page {
-  height: 100vh;
-  overflow: hidden;
-}
+/* NAV electric flicker */
+nav a.electric{color:#fff; text-shadow:0 0 10px #00bfff;transform:translateY(-1px);transition:all .15s}
 
-#hero-video {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.8);
-  z-index: -2;
-}
+/* Animations */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeInUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
 
-.hero-content {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  animation: fadeIn 2s ease;
-}
-
-/* NAME highlight glow */
-.hero-content h1 {
-  font-size: 3.6rem;
-  font-weight: 700;
-}
-
-.highlight {
-  color: #00bfff;
-  text-shadow: 
-    0 0 10px #00d9ff,
-    0 0 20px #0094ff,
-    0 0 30px #00bfff;
-}
-
-.hero-content p {
-  font-size: 1.4rem;
-  margin-top: 0.6rem;
-}
-
-/* ===========================================================
-   ABOUT PAGE VIDEO — FULL BACKGROUND
-   =========================================================== */
-#bg-video {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-  filter: none !important;
-}
-
-/* Dark overlay */
-.page-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.3);
-  z-index: -1;
-}
-
-/* ===========================================================
-   GLASS CARD SECTIONS
-   =========================================================== */
-section, .glass-card {
-  max-width: 800px;
-  margin: 12vh auto;
-  padding: 60px 40px;
-  border-radius: 20px;
-  text-align: center;
-  background: rgba(15, 15, 15, 0.3);
-  backdrop-filter: blur(15px) saturate(130%);
-  box-shadow: 0 0 40px rgba(0,191,255,0.25);
-  animation: fadeInUp 1.4s ease;
-}
-
-section h1 {
-  font-size: 3rem;
-  margin-bottom: 1.4rem;
-}
-
-section p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-/* ===========================================================
-   LIGHTNING EFFECT (Gear 5 scroll aura)
-   =========================================================== */
-@keyframes lightning {
-  0% { filter: brightness(1); }
-  30% { filter: brightness(2.5) contrast(1.6); }
-  60% { filter: brightness(1); }
-  90% { filter: brightness(2) contrast(1.3); }
-  100% { filter: brightness(1); }
-}
-
-.lightning-flash {
-  animation: lightning 0.25s ease;
-}
-
-/* ===========================================================
-   LOADER
-   =========================================================== */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle, #000 50%, #0a0a0a);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 1s, visibility 1s;
-}
-
-.loader-ring {
-  width: 110px;
-  height: 110px;
-  border: 6px solid #333;
-  border-top: 6px solid #00bfff;
-  border-radius: 50%;
-  animation: spin 1.1s linear infinite;
-  margin-bottom: 20px;
-}
-
-.loader-text {
-  font-size: 1.6rem;
-  letter-spacing: 2px;
-  color: #00bfff;
-  text-shadow: 0 0 10px #00d9ff;
-  animation: pulse 1.6s infinite;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-.loaded #loader {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* ===========================================================
-   ANIMATIONS
-   =========================================================== */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(25px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Responsive tweaks */
+@media (max-width:760px){
+  .hero-content h1{font-size:2.2rem}
+  .glass-card,section{padding:36px 20px;margin:8vh 16px}
 }
