@@ -14,13 +14,11 @@
     <h2 class="loader-text">Gear 5 Awakening...</h2>
   </div>
 
-  <!-- 🎬 Background Video -->
-  <div class="video-section">
-    <video autoplay muted loop playsinline id="hero-video">
-      <source src="Eiffel.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+  <!-- 🎬 Fullscreen Background Video -->
+  <video autoplay muted loop playsinline id="hero-video">
+    <source src="Eiffel.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
 
   <!-- 🧭 Navigation -->
   <nav>
@@ -33,38 +31,16 @@
     </ul>
   </nav>
 
-  <!-- 🏠 Hero Section -->
-  <section>
-    <h1>Hey, I'm Adhitya Raman</h1>
+  <!-- 🏠 Centered Hero Text -->
+  <div class="hero-content">
+    <h1>Hey, I'm <span class="highlight">Adhitya Raman</span></h1>
     <p>Welcome to my Portfolio ✨</p>
-  </section>
+  </div>
 
-  <!-- ⚙️ Scroll + Aura Script -->
+  <!-- Loader Hide Script -->
   <script>
   window.addEventListener("load", () => {
     document.body.classList.add("loaded");
-  });
-
-  const video = document.getElementById("hero-video"); // ✅ fixed ID
-  let lastScrollTop = 0;
-
-  window.addEventListener("scroll", () => {
-    if (!video) return;
-    const scrollValue = window.scrollY;
-
-    // Smooth zoom effect as you scroll
-    video.style.transform = `scale(${1 + scrollValue / 2000})`;
-
-    // Subtle glowing aura effect
-    document.body.style.boxShadow = `0 0 ${20 + scrollValue / 8}px rgba(0,191,255,0.3)`;
-
-    // Lightning flicker effect on fast scroll
-    let st = window.pageYOffset || document.documentElement.scrollTop;
-    if (Math.abs(st - lastScrollTop) > 20 && Math.random() > 0.6) {
-      document.body.classList.add("lightning-flash");
-      setTimeout(() => document.body.classList.remove("lightning-flash"), 120);
-    }
-    lastScrollTop = st <= 0 ? 0 : st;
   });
   </script>
 
