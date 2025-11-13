@@ -6,7 +6,8 @@
   <title>Adhitya Raman | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+
+<body class="home-page">
 
   <!-- ⚡ GEAR 5 LOADER -->
   <div id="loader">
@@ -17,7 +18,6 @@
   <!-- 🎬 Fullscreen Background Video -->
   <video autoplay muted loop playsinline id="hero-video">
     <source src="Eiffel.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
   </video>
 
   <!-- 🧭 Navigation -->
@@ -31,17 +31,16 @@
     </ul>
   </nav>
 
-  <!-- 🏠 Centered Hero Text -->
+  <!-- 🏠 Centered Hero Content -->
   <div class="hero-content">
     <h1>Hey, I'm <span class="highlight">Adhitya Raman</span></h1>
     <p>Welcome to my Portfolio ✨</p>
   </div>
 
-  <!-- Loader Hide Script -->
   <script>
-  window.addEventListener("load", () => {
-    document.body.classList.add("loaded");
-  });
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
   </script>
 
 </body>
