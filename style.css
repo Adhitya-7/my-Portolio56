@@ -286,3 +286,19 @@ nav a.active::after {
   0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   100% { opacity: 0; transform: translate(-50%, -120%) scale(0.3); }
 }
+/* CONTACT PAGE BACKGROUND */
+.contact-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("irongiant.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -20;
+  filter: brightness(0.92) contrast(1.04);
+  will-change: transform;
+  transition: transform .3s ease-out;
+}
+
