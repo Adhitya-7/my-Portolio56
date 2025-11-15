@@ -6,82 +6,153 @@
 :root {
   --accent: #00bfff;
   --glass-bg: rgba(20,20,20,0.42);
+  --glow: 0 0 22px rgba(0,191,255,0.65);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family:'Montserrat',sans-serif;
   color: #fff;
   background: #000;
-  overflow-x: hidden;
-  transition: opacity .6s ease-out;
+  overflow: hidden;         /* ❗ no scrolling — cinematic */
+  transition: opacity .7s ease-out;
   opacity: 0;
+  transform-style: preserve-3d;
 }
 
-/* show after load */
+/* Show page after loading */
 body.loaded { opacity: 1; }
 
-/* NAVBAR */
+/* ===========================================================
+   NAVBAR
+   =========================================================== */
 nav {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 60;
+  z-index: 200;
+  padding: 1rem 0;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(10px);
-  padding: 1rem 0;
   animation: floatNav 4s ease-in-out infinite alternate;
 }
 
-@keyframes floatNav { 0%{transform:translateY(0)}100%{transform:translateY(6px)} }
-
-nav ul { display:flex; justify-content:center; gap:2rem; list-style:none; margin:0; padding:0; }
-nav a { color: #fff; text-decoration:none; font-weight:700; position:relative; transition:.25s; font-size:1.05rem; }
-nav a:hover, nav a.active { color: var(--accent); text-shadow:0 0 10px rgba(0,191,255,0.85); }
-nav a::after { content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--accent); transition:width .25s; }
-nav a:hover::after, nav a.active::after { width:100%; }
-nav a.electric { color:var(--accent) !important; text-shadow:0 0 12px var(--accent); transform:translateY(-1px); }
-
-/* VIDEO (hero and backgrounds) */
-.video-section { width:100%; height:100vh; overflow:hidden; position:relative; z-index:-10; }
-#hero-video, #bg-video {
-  position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  object-fit: cover;
-  z-index:-15;
-  will-change: transform;
-  transition: transform .25s ease-out;
+@keyframes floatNav {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(6px); }
 }
 
-/* subtle overlay for readability */
-.page-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.25); z-index:-5; }
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 2.4rem;
+  list-style: none;
+}
 
-/* GLASS CARD (main) */
-.glass-card {
-  max-width: 900px;
-  margin: 18vh auto;
-  padding: 54px 48px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px) saturate(140%);
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 10px 40px rgba(0,191,255,0.12);
+nav a {
+  color: white;
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
   position: relative;
-  z-index: 10;
-  animation: fadeUp .9s ease;
+  transition: .25s;
 }
 
-@keyframes fadeUp { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:none } }
+nav a:hover,
+nav a.active {
+  color: var(--accent);
+  text-shadow: var(--glow);
+}
 
-.home-card { margin-top: 30vh; }
+nav a::after {
+  content:"";
+  position:absolute;
+  left:0; bottom:-6px;
+  width:0; height:2px;
+  background: var(--accent);
+  transition: width .25s;
+}
 
-/* typography inside glass */
-.glass-card h1 { font-size: 2.8rem; margin-bottom: 1rem; letter-spacing: .6px; }
-.glass-card p { font-size: 1.35rem; line-height: 1.6; margin-bottom: .9rem; color: rgba(255,255,255,0.95); }
+nav a:hover::after,
+nav a.active::after {
+  width:100%;
+}
 
-.highlight { color: var(--accent); text-shadow:0 0 12px rgba(0,191,255,.8); }
+nav a.electric {
+  color: var(--accent) !important;
+  text-shadow: 0 0 18px var(--accent);
+  transform: translateY(-2px);
+}
 
-/* text-shine heading */
+/* ===========================================================
+   VIDEO BACKGROUND LAYERS (supports parallax)
+   =========================================================== */
+.video-section,
+#hero-video,
+#bg-video {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  z-index:-20;
+  will-change: transform;
+}
+
+/* overlay for readability */
+.page-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: -15;
+}
+
+/* ===========================================================
+   GLASS CARD
+   =========================================================== */
+.glass-card {
+  max-width: 980px;
+  margin: 26vh auto;
+  padding: 70px 60px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 0 45px rgba(0,191,255,0.25);
+  z-index: 50;
+  position: relative;
+  animation: fadeUp .8s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(25px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.glass-card h1 {
+  font-size: 3.3rem;
+  margin-bottom: 1.4rem;
+  letter-spacing: .65px;
+}
+
+.glass-card p {
+  font-size: 1.45rem;
+  line-height: 1.7;
+  margin-bottom: .9rem;
+  color: rgba(255,255,255,0.95);
+}
+
+.highlight {
+  color: var(--accent);
+  text-shadow: 0 0 20px rgba(0,191,255,0.8);
+}
+
+/* SHINING HEADER TEXT */
 .text-shine {
   background: linear-gradient(90deg, #fff, var(--accent), #fff);
   background-size: 200%;
@@ -89,81 +160,112 @@ nav a.electric { color:var(--accent) !important; text-shadow:0 0 12px var(--acce
   color: transparent;
   animation: shineMove 3s linear infinite;
 }
-@keyframes shineMove { 0%{background-position:0%}100%{background-position:200%} }
 
-/* SPARK effect */
+@keyframes shineMove {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+/* ===========================================================
+   SPARK EFFECT (click)
+   =========================================================== */
 .spark {
   position: fixed;
-  width: 12px; height: 12px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  pointer-events: none;
+  pointer-events:none;
   background: radial-gradient(circle, #fff, var(--accent));
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   animation: spark .6s forwards ease-out;
   z-index: 99999;
 }
-@keyframes spark { from{opacity:1; transform:translate(-50%,-50%) scale(1)} to{opacity:0; transform:translate(-50%,-80%) scale(0)} }
 
-/* WORKS GRID */
+@keyframes spark {
+  from { opacity:1; transform:translate(-50%,-50%) scale(1); }
+  to   { opacity:0; transform:translate(-50%,-70%) scale(0); }
+}
+
+/* ===========================================================
+   WORKS PAGE GRID + CARDS
+   =========================================================== */
 .works-container {
-  max-width: 1100px;
-  margin: 0 auto 10vh auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
-  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 22vh;
   padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.7rem;
+  z-index: 30;
   position: relative;
-  z-index: 10;
 }
 
 .work-card {
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(14px);
-  border-radius: 18px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(18px);
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0,191,255,0.08);
-  transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .35s;
   cursor: pointer;
-  position: relative;
-}
-
-.work-card::before {
-  content: "";
-  position: absolute;
-  left: var(--x, 50%);
-  top: var(--y, 50%);
-  width: 0;
-  height: 0;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  transition: width .3s, height .3s, opacity .3s;
+  box-shadow: 0 12px 45px rgba(0,191,255,0.18);
+  transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .35s;
 }
 
 .work-card:hover {
-  transform: translateY(-12px) scale(1.03);
-  box-shadow: 0 18px 50px rgba(0,191,255,0.18);
-  animation: cardLightning .35s ease;
+  transform: translateY(-14px) scale(1.04);
+  box-shadow: 0 20px 60px rgba(0,191,255,0.28);
+  animation: cardFlash .35s ease;
 }
 
-@keyframes cardLightning {
-  0% { filter: brightness(1) }
-  40% { filter: brightness(2.2) contrast(1.4) }
-  100% { filter: brightness(1) }
+@keyframes cardFlash {
+  0% { filter: brightness(1); }
+  45% { filter: brightness(2) contrast(1.35); }
+  100% { filter: brightness(1); }
 }
 
-.work-card img { width:100%; height:230px; object-fit:cover; transition: transform .45s; display:block; }
-.work-card:hover img { transform: scale(1.12); }
+.work-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
 
-.work-info { padding: 18px 20px 30px; text-align: left; }
-.work-info h2 { font-size:1.9rem; margin-bottom:10px; text-shadow: 0 0 8px rgba(0,191,255,0.7); }
-.work-info p { font-size:1.25rem; color: rgba(255,255,255,0.95); line-height:1.5; }
+.work-card:hover img {
+  transform: scale(1.15);
+}
 
-/* responsive */
+.work-info {
+  padding: 22px 26px 30px;
+}
+
+.work-info h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  text-shadow: 0 0 12px rgba(0,191,255,0.7);
+}
+
+.work-info p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.92);
+}
+
+/* ===========================================================
+   RESPONSIVE
+   =========================================================== */
 @media (max-width: 760px) {
-  .glass-card { margin: 10vh 18px; padding: 36px 20px; }
-  .glass-card h1 { font-size: 2rem; }
-  .glass-card p { font-size: 1.05rem; }
-  .work-card img { height: 160px; }
-  .work-info h2 { font-size: 1.3rem; }
+  nav ul { gap: 1.2rem; }
+  nav a { font-size: 0.95rem; }
+
+  .glass-card {
+    margin: 14vh 18px;
+    padding: 38px 24px;
+  }
+
+  .glass-card h1 { font-size: 2.2rem; }
+  .glass-card p { font-size: 1.1rem; }
+
+  .work-card img { height: 170px; }
+  .work-info h2 { font-size: 1.4rem; }
   .work-info p { font-size: 1rem; }
 }
