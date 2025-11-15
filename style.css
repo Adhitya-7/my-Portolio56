@@ -275,3 +275,127 @@ nav a.electric {
   .work-info p { font-size:1.05rem; }
 }
 
+/* ===========================================================
+   UNIVERSAL RESPONSIVE FIX — PC + TABLET + MOBILE
+   =========================================================== */
+
+@media (max-width: 1280px) {
+  .glass-card {
+    width: 70%;
+  }
+}
+
+/* TABLETS (iPad, Android tablets) */
+@media (max-width: 1024px) {
+  nav ul {
+    gap: 1.6rem;
+  }
+
+  .glass-card {
+    margin: 20vh auto;
+    width: 80%;
+    padding: 55px 40px;
+  }
+
+  .glass-card h1 { font-size: 2.6rem; }
+  .glass-card p { font-size: 1.25rem; }
+
+  .works-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .work-card img { height: 200px; }
+}
+
+/* MOBILE FIXES (Optimized for iPhone + Android) */
+@media (max-width: 820px) {
+
+  body {
+    overflow-y: auto;   /* Allow scrolling on mobile */
+  }
+
+  /* NAVBAR */
+  nav {
+    padding: 0.7rem 0;
+  }
+
+  nav ul {
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  /* GLASS CARD MOBILE */
+  .glass-card {
+    width: 90%;
+    padding: 35px 25px !important;
+    margin: 16vh auto !important;
+  }
+
+  .glass-card h1 {
+    font-size: 2rem !important;
+    line-height: 2.4rem;
+  }
+
+  .glass-card p {
+    font-size: 1.1rem !important;
+  }
+
+  /* HOME CARD SPECIAL */
+  .home-card {
+    margin-top: 20vh !important;
+  }
+
+  /* WORKS MOBILE */
+  .works-container {
+    margin-top: 14vh;
+    grid-template-columns: 1fr !important;
+    padding: 10px;
+    gap: 1.6rem;
+  }
+
+  .work-card img {
+    height: 160px !important;
+  }
+
+  .work-info h2 {
+    font-size: 1.4rem !important;
+  }
+
+  .work-info p {
+    font-size: 1.05rem !important;
+  }
+
+  /* CONTACT PAGE BACKGROUND */
+  .contact-bg {
+    background-position: center top;
+    background-size: cover;
+    filter: brightness(0.7);
+  }
+
+  /* VIDEO PERFORMANCE BOOST */
+  #hero-video,
+  #bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: none !important;
+  }
+
+  /* DISABLE PARALLAX ON PHONE */
+  body.mobile-off #hero-video,
+  body.mobile-off #bg-video,
+  body.mobile-off .glass-card {
+    transform: none !important;
+  }
+}
+
+/* ULTRA SMALL DEVICES (old phones) */
+@media (max-width: 400px) {
+  nav a { font-size: 0.8rem; }
+  .glass-card h1 { font-size: 1.7rem !important; }
+  .glass-card p { font-size: 0.95rem !important; }
+}
+
