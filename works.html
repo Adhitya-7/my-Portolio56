@@ -1,66 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>My Works | Adhitya Raman</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="data:,">
-  <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
-
 </head>
-
 <body>
 
-<video id="bg-video" autoplay muted loop playsinline preload="auto">
-  <source src="office1.mp4" type="video/mp4" />
-</video>
+  <!-- Office background (works) -->
+  <video id="bg-video" autoplay muted loop playsinline preload="auto">
+    <source src="office1.mp4" type="video/mp4">
+    Your browser doesn't support video.
+  </video>
 
-<div class="page-overlay"></div>
+  <div class="page-overlay"></div>
 
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About Me</a></li>
-    <li><a class="active" href="works.html">My Works</a></li>
-    <li><a href="hobbies.html">Hobbies</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
+  <!-- Nav -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a class="active" href="works.html">My Works</a></li>
+      <li><a href="hobbies.html">Hobbies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-<section class="glass-card fade-up">
-  <h1 class="text-shine">My Works ⚡</h1>
-  <p>A showcase of the projects I've built with passion and curiosity.</p>
-</section>
+  <!-- Intro card -->
+  <section class="glass-card">
+    <h1 class="text-shine">My Works ⚡</h1>
+    <p>A showcase of the projects I've built with passion and curiosity.</p>
+  </section>
 
-<div class="works-container">
+  <!-- Projects grid -->
+  <div class="works-container">
+    <div class="work-card">
+      <img src="project1.jpg" alt="UAV Drone System">
+      <div class="work-info">
+        <h2>⚙️ Secure UAV Drone System</h2>
+        <p>A hybrid RSA &amp; ECC encrypted drone communication system ensuring safe aerial operations.</p>
+      </div>
+    </div>
 
-  <div class="work-card fade-up">
-    <img src="project1.jpg" alt="UAV Drone System" />
-    <div class="work-info">
-      <h2>Secure UAV Drone System</h2>
-      <p>A hybrid RSA & ECC encrypted drone communication system.</p>
+    <div class="work-card">
+      <img src="project2.jpg" alt="Curfew Pass App">
+      <div class="work-info">
+        <h2>🛂 Curfew E-Pass System</h2>
+        <p>A complete pass-issuing web system built using HTML, CSS, and JavaScript.</p>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <img src="project3.jpg" alt="Security Analysis">
+      <div class="work-info">
+        <h2>🔐 Cyber Security Analysis</h2>
+        <p>Performed packet sniffing, threat analysis, and vulnerability testing using Kali Linux.</p>
+      </div>
     </div>
   </div>
 
-  <div class="work-card fade-up">
-    <img src="project2.jpg" alt="Curfew Pass App" />
-    <div class="work-info">
-      <h2>Curfew E-Pass System</h2>
-      <p>A pass issuing system built with HTML, CSS & JS.</p>
-    </div>
-  </div>
-
-  <div class="work-card fade-up">
-    <img src="project3.jpg" alt="Security Analysis" />
-    <div class="work-info">
-      <h2>Cyber Security Analysis</h2>
-      <p>Packet sniffing, threat analysis & vulnerability testing.</p>
-    </div>
-  </div>
-
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
-
