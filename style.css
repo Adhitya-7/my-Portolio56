@@ -285,3 +285,10 @@ nav a.electric {
   .work-info h2 { font-size: 1.4rem; }
   .work-info p { font-size: 1rem; }
 }
+
+/* REMOVE TOP BLACK BAR — FORCE CROPPING */
+#hero-video, #bg-video {
+    object-fit: cover !important;
+    object-position: center -60px !important;
+}
+
