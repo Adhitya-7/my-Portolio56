@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>My Works | Adhitya Raman</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
 </head>
 
 <body>
 
+<!-- 🌌 Particle Background -->
+<canvas id="particles"></canvas>
+
 <!-- Background Video -->
 <video id="bg-video" autoplay muted loop playsinline preload="auto">
-  <source src="office1.mp4" type="video/mp4">
+  <source src="office1.mp4" type="video/mp4" />
 </video>
 
 <div class="page-overlay"></div>
@@ -26,39 +30,73 @@
   </ul>
 </nav>
 
-<section class="glass-card">
+<section class="glass-card fade-up">
   <h1 class="text-shine">My Works ⚡</h1>
   <p>A showcase of the projects I've built with passion and curiosity.</p>
 </section>
 
 <div class="works-container">
 
-  <div class="work-card">
-    <img src="project1.jpg" alt="UAV Drone System">
+  <!-- Project 1 -->
+  <div class="work-card tilt neon fade-up" onclick="openProject(1)">
+    <img src="project1.jpg" alt="UAV Drone System" />
     <div class="work-info">
-      <h2>⚙️ Secure UAV Drone System</h2>
-      <p>A hybrid RSA & ECC encrypted drone communication system ensuring safe aerial operations.</p>
+      <h2>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L15 8H9L12 2Z" stroke="white" stroke-width="2"/>
+          <circle cx="12" cy="14" r="4" stroke="white" stroke-width="2"/>
+          <path d="M3 14H7" stroke="white" stroke-width="2"/>
+          <path d="M17 14H21" stroke="white" stroke-width="2"/>
+        </svg>
+        Secure UAV Drone System
+      </h2>
+      <p>A hybrid RSA & ECC encrypted drone communication system.</p>
     </div>
   </div>
 
-  <div class="work-card">
-    <img src="project2.jpg" alt="Curfew Pass App">
+  <!-- Project 2 -->
+  <div class="work-card tilt neon fade-up" onclick="openProject(2)">
+    <img src="project2.jpg" alt="Curfew Pass App" />
     <div class="work-info">
-      <h2>🛂 Curfew E-Pass System</h2>
-      <p>A complete pass-issuing web system built using HTML, CSS, and JavaScript.</p>
+      <h2>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="3" width="18" height="14" rx="2" stroke="white" stroke-width="2"/>
+          <path d="M7 21H17" stroke="white" stroke-width="2"/>
+          <path d="M9 11H15" stroke="white" stroke-width="2"/>
+        </svg>
+        Curfew E-Pass System
+      </h2>
+      <p>A complete pass-issuing system built with HTML, CSS, JS.</p>
     </div>
   </div>
 
-  <div class="work-card">
-    <img src="project3.jpg" alt="Security Analysis">
+  <!-- Project 3 -->
+  <div class="work-card tilt neon fade-up" onclick="openProject(3)">
+    <img src="project3.jpg" alt="Security Analysis" />
     <div class="work-info">
-      <h2>🔐 Cyber Security Analysis</h2>
-      <p>Performed packet sniffing, threat analysis, and vulnerability testing using Kali Linux.</p>
+      <h2>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L20 6V12C20 17 16.4 21.6 12 22C7.6 21.6 4 17 4 12V6L12 2Z" stroke="white" stroke-width="2"/>
+          <circle cx="12" cy="12" r="2" stroke="white" stroke-width="2"/>
+        </svg>
+        Cyber Security Analysis
+      </h2>
+      <p>Packet sniffing, threat analysis & vulnerability testing.</p>
     </div>
   </div>
 
 </div>
 
-<script src="script.js" defer></script>
+<!-- 🌟 Modal Popup -->
+<div id="projectModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeProject()">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+    <img id="modalImg" />
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
