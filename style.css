@@ -1,6 +1,4 @@
-/* ===========================================================
-   GLOBAL RESET + BASE
-   =========================================================== */
+/* RESET */
 * { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
@@ -9,286 +7,152 @@
   --glow: 0 0 22px rgba(0,191,255,0.65);
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-}
-
 body {
   font-family:'Montserrat',sans-serif;
-  color: #fff;
-  background: #000;
-
-  /* ✨ NO SCROLL + FIXED HEIGHT (removes gap) */
-  overflow-x: hidden;
-  overflow-y: hidden;
-  height: 100vh;
-
-  transition: opacity .7s ease-out;
-  opacity: 0;
-  transform-style: preserve-3d;
+  background:#000;
+  color:white;
+  overflow:hidden; /* No scrolling */
+  opacity:0;
+  transition:opacity .7s ease-out;
 }
 
-/* Fade-in after load */
-body.loaded { opacity: 1; }
+/* show page */
+body.loaded { opacity:1; }
 
-/* ===========================================================
-   NAVBAR
-   =========================================================== */
+/* NAVBAR */
 nav {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 200;
-
-  /* 🔧 Reduced padding so it doesn't push content down */
-  padding: 0.6rem 0;
-
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(10px);
-
-  animation: floatNav 4s ease-in-out infinite alternate;
+  position:fixed;
+  top:0; width:100%;
+  padding:1rem 0;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(10px);
+  z-index:20;
+  animation:floatNav 4s ease-in-out infinite alternate;
 }
 
 @keyframes floatNav {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(6px); }
+  from {transform:translateY(0);}
+  to   {transform:translateY(6px);}
 }
 
 nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 2.4rem;
-  list-style: none;
+  display:flex;
+  justify-content:center;
+  gap:2.2rem;
+  list-style:none;
 }
 
 nav a {
-  color: white;
-  font-weight: 700;
-  font-size: 1.15rem;
-  text-decoration: none;
-  position: relative;
-  transition: .25s;
+  color:white;
+  text-decoration:none;
+  font-weight:700;
+  font-size:1.15rem;
+  position:relative;
+  transition:.25s;
 }
 
 nav a:hover,
 nav a.active {
-  color: var(--accent);
-  text-shadow: var(--glow);
+  color:var(--accent);
+  text-shadow:var(--glow);
 }
 
 nav a::after {
   content:"";
   position:absolute;
-  left:0; bottom:-6px;
+  bottom:-6px; left:0;
   width:0; height:2px;
-  background: var(--accent);
-  transition: width .25s;
+  background:var(--accent);
+  transition:.25s;
 }
 
 nav a:hover::after,
-nav a.active::after {
-  width:100%;
-}
+nav a.active::after { width:100%; }
 
 nav a.electric {
-  color: var(--accent) !important;
-  text-shadow: 0 0 18px var(--accent);
-  transform: translateY(-2px);
+  color:var(--accent)!important;
+  text-shadow:0 0 12px var(--accent);
 }
 
-/* ===========================================================
-   BACKGROUND VIDEO
-   =========================================================== */
-.video-section,
-#hero-video,
-#bg-video {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  z-index:-20;
-  will-change: transform;
+/* BACKGROUND VIDEO (FIX FOR BLACK BAR) */
+#hero-video {
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center -90px !important; /* removes black bar */
+  z-index:-10;
+  transition:transform .25s ease-out;
 }
 
 /* overlay */
 .page-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.25);
-  z-index: -15;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.25);
+  z-index:-5;
 }
 
-/* ===========================================================
-   GLASS CARD (MAIN HERO)
-   =========================================================== */
+/* GLASS CARD */
 .glass-card {
-  max-width: 980px;
-
-  /* 🔧 FIXED: removed gap by reducing margin-top */
-  margin: 18vh auto;
-
-  padding: 70px 60px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px) saturate(160%);
-  border-radius: 22px;
-  text-align: center;
-
-  box-shadow: 0 0 45px rgba(0,191,255,0.25);
-  z-index: 50;
-  position: relative;
-
-  animation: fadeUp .8s ease;
+  max-width:900px;
+  margin:26vh auto;
+  padding:60px 50px;
+  background:var(--glass-bg);
+  backdrop-filter:blur(20px) saturate(160%);
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 0 40px rgba(0,191,255,0.25);
+  animation:fadeUp .8s ease;
 }
 
 @keyframes fadeUp {
-  from { opacity:0; transform:translateY(25px); }
-  to   { opacity:1; transform:translateY(0); }
+  from {opacity:0; transform:translateY(30px);}
+  to   {opacity:1; transform:none;}
 }
 
 .glass-card h1 {
-  font-size: 3.3rem;
-  margin-bottom: 1.4rem;
-  letter-spacing: .65px;
+  font-size:3.2rem;
+  margin-bottom:1rem;
 }
 
 .glass-card p {
-  font-size: 1.45rem;
-  line-height: 1.7;
-  margin-bottom: .9rem;
-  color: rgba(255,255,255,0.95);
+  font-size:1.4rem;
+  line-height:1.6;
 }
 
 .highlight {
-  color: var(--accent);
-  text-shadow: 0 0 20px rgba(0,191,255,0.8);
+  color:var(--accent);
+  text-shadow:0 0 20px var(--accent);
 }
 
-/* SHINING HEADER */
+/* TEXT SHINE */
 .text-shine {
-  background: linear-gradient(90deg, #fff, var(--accent), #fff);
-  background-size: 200%;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: shineMove 3s linear infinite;
+  background:linear-gradient(90deg,#fff,var(--accent),#fff);
+  background-size:200%;
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:shineMove 3s linear infinite;
 }
 
 @keyframes shineMove {
-  0% { background-position: 0%; }
-  100% { background-position: 200%; }
+  0% {background-position:0%;}
+  100%{background-position:200%;}
 }
 
-/* ===========================================================
-   SPARK CLICK ANIMATION
-   =========================================================== */
+/* SPARK */
 .spark {
-  position: fixed;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+  position:fixed;
+  width:12px; height:12px;
+  background:radial-gradient(circle,#fff,var(--accent));
+  border-radius:50%;
   pointer-events:none;
-  background: radial-gradient(circle, #fff, var(--accent));
-  transform: translate(-50%, -50%);
-  animation: spark .6s forwards ease-out;
-  z-index: 99999;
+  transform:translate(-50%,-50%);
+  z-index:9999;
+  animation:spark .6s forwards ease-out;
 }
 
 @keyframes spark {
-  from { opacity:1; transform:translate(-50%,-50%) scale(1); }
-  to   { opacity:0; transform:translate(-50%,-70%) scale(0); }
+  from {opacity:1; transform:translate(-50%,-50%) scale(1);}
+  to   {opacity:0; transform:translate(-50%,-80%) scale(0);}
 }
-
-/* ===========================================================
-   WORKS PAGE – GRID + CARDS
-   =========================================================== */
-.works-container {
-  max-width: 1200px;
-  margin: 22vh auto 0 auto;
-  padding: 20px;
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.7rem;
-
-  z-index: 30;
-  position: relative;
-}
-
-.work-card {
-  background: rgba(255,255,255,0.08);
-  border-radius: 20px;
-  backdrop-filter: blur(18px);
-  overflow: hidden;
-  cursor: pointer;
-
-  box-shadow: 0 12px 45px rgba(0,191,255,0.18);
-  transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .35s;
-}
-
-.work-card:hover {
-  transform: translateY(-14px) scale(1.04);
-  box-shadow: 0 20px 60px rgba(0,191,255,0.28);
-  animation: cardFlash .35s ease;
-}
-
-@keyframes cardFlash {
-  0% { filter: brightness(1); }
-  45% { filter: brightness(2) contrast(1.35); }
-  100% { filter: brightness(1); }
-}
-
-.work-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  transition: transform .4s ease;
-}
-
-.work-card:hover img {
-  transform: scale(1.15);
-}
-
-.work-info {
-  padding: 22px 26px 30px;
-}
-
-.work-info h2 {
-  font-size: 2rem;
-  margin-bottom: 12px;
-  text-shadow: 0 0 12px rgba(0,191,255,0.7);
-}
-
-.work-info p {
-  font-size: 1.3rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.92);
-}
-
-/* ===========================================================
-   RESPONSIVE
-   =========================================================== */
-@media (max-width: 760px) {
-  nav ul { gap: 1.2rem; }
-  nav a { font-size: 0.95rem; }
-
-  .glass-card {
-    margin: 15vh 18px;
-    padding: 38px 24px;
-  }
-
-  .glass-card h1 { font-size: 2.2rem; }
-  .glass-card p { font-size: 1.1rem; }
-
-  .work-card img { height: 170px; }
-  .work-info h2 { font-size: 1.4rem; }
-  .work-info p { font-size: 1rem; }
-}
-
-/* REMOVE TOP BLACK BAR — FORCE CROPPING */
-#hero-video, #bg-video {
-    object-fit: cover !important;
-    object-position: center -60px !important;
-}
-
