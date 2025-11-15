@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Adhitya Raman | Home</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body class="home-page">
 
-<!-- Hero Video -->
-<video autoplay muted loop playsinline id="hero-video">
-  <source src="Eiffel.mp4" type="video/mp4">
-</video>
+  <!-- Hero Video (index) -->
+  <div class="video-section">
+    <video id="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="Eiffel.mp4" type="video/mp4">
+      Your browser doesn't support video.
+    </video>
+  </div>
 
-<!-- Navigation -->
-<nav>
-  <ul>
-    <li><a class="active" href="index.html">Home</a></li>
-    <li><a href="about.html">About Me</a></li>
-    <li><a href="works.html">My Works</a></li>
-    <li><a href="hobbies.html">Hobbies</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
+  <!-- semi-transparent overlay -->
+  <div class="page-overlay"></div>
 
-<!-- Hero Content -->
-<section class="glass-card home-card">
-  <h1>Hey, I'm <span class="highlight">Adhitya Raman</span></h1>
-  <p>Welcome to my Portfolio ✨</p>
-</section>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a class="active" href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="works.html">My Works</a></li>
+      <li><a href="hobbies.html">Hobbies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-<script src="script.js" defer></script>
+  <!-- Glass hero card -->
+  <section class="glass-card home-card">
+    <h1 class="text-shine">Hey, I'm <span class="highlight">Adhitya Raman</span></h1>
+    <p>Welcome to my portfolio ✨ — cloud enthusiast · security tinkerer · maker.</p>
+  </section>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
