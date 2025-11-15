@@ -10,20 +10,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const $$ = sel => Array.from(document.querySelectorAll(sel));
 
     /* ===========================================================
-       1. Fade-in Body (works for ALL pages)
+       1. Fade-in Body (ALL pages)
     ============================================================ */
     window.addEventListener("load", () => {
         document.body.classList.add("loaded");
 
-        // Only start particles on pages that actually contain #particles
+        // Particles only if #particles exists
         if ($("#particles")) startParticles();
 
-        // Only start fade-up if elements exist
+        // Fade-up only if .fade-up elements exist
         if ($$(".fade-up").length) initFadeUp();
     });
 
     /* ===========================================================
-       2. Electric Navigation (ALL pages)
+       2. Electric Nav Hover (ALL pages)
     ============================================================ */
     $$("nav a").forEach(a => {
         a.addEventListener("mouseenter", () => {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ===========================================================
-       3. Spark Effect (ALL pages)
+       3. Spark Click Effect (ALL pages)
     ============================================================ */
     document.addEventListener("click", e => {
         const s = document.createElement("span");
@@ -69,21 +69,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ===========================================================
-       WORKS PAGE ONLY 🚀
-       Detect page via URL:
-       /works.html or /yourrepo/works.html
+       WORKS PAGE ONLY 🚀 (SAFEST POSSIBLE CHECK)
+       Runs only if #projectModal exists in the DOM
     ============================================================ */
 
-    const isWorksPage =
-        window.location.pathname.includes("works.html") ||
-        document.title.includes("My Works");
+    const isWorksPage = document.getElementById("projectModal") !== null;
 
     if (isWorksPage) {
 
         /* ================= Tilt Cards ================= */
         initTilt();
 
-        /* ================= Lightning Hover ============ */
+        /* ================= Lightning Flash ============ */
         $$(".work-card").forEach(card => {
             card.addEventListener("mouseenter", () => {
                 card.classList.add("lightning-flash");
@@ -116,8 +113,9 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         window.openProject = id => {
-            if (!modal) return;
             const p = projects[id];
+            if (!p || !modal) return;
+
             modalTitle.textContent = p.title;
             modalDesc.textContent = p.desc;
             modalImg.src = p.img;
@@ -132,17 +130,17 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.style.overflow = "";
         };
 
-        if (modal) {
-            modal.addEventListener("click", e => {
-                if (e.target === modal) closeProject();
-            });
+        // Close modal when clicking overlay
+        modal.addEventListener("click", e => {
+            if (e.target === modal) closeProject();
+        });
 
-            document.addEventListener("keydown", e => {
-                if (e.key === "Escape" && modal.classList.contains("open")) {
-                    closeProject();
-                }
-            });
-        }
+        // Close on Esc key
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape" && modal.classList.contains("open")) {
+                closeProject();
+            }
+        });
     }
 
     /* ===========================================================
@@ -162,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ===========================================================
-       TILT FUNCTION (only runs if .work-card.tilt exists)
+       TILT FUNCTION (WORKS PAGE ONLY)
     ============================================================ */
     function initTilt() {
         const cards = $$(".work-card.tilt");
@@ -193,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ===========================================================
-       PARTICLE BACKGROUND (only runs if #particles exists)
+       PARTICLE BACKGROUND (ALL pages if element exists)
     ============================================================ */
     function startParticles() {
         const canvas = $("#particles");
@@ -233,10 +231,8 @@ document.addEventListener("DOMContentLoaded", () => {
         function loop(now) {
             const dt = now - last;
             last = now;
-
             ctx.clearRect(0, 0, w, h);
             particles.forEach(p => { p.step(dt / 16); p.draw(); });
-
             raf(loop);
         }
         loop(last);
