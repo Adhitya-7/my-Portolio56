@@ -79,3 +79,6 @@ function spawnParticles() {
         setTimeout(() => p.remove(), 6000);
     }, 250); // particle frequency
 }
+if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    document.body.classList.add("mobile-off");
+}
