@@ -302,3 +302,50 @@ nav a.active::after {
   transition: transform .3s ease-out;
 }
 
+/* === Floating Particles === */
+.particle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: rgba(0,191,255,0.75);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(2px);
+  animation: floatUp 5s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) scale(1); opacity: .9; }
+  100% { transform: translateY(-120vh) scale(0.3); opacity: 0; }
+}
+/* Lightning border flicker */
+.gear5:hover {
+  animation: lightningFlicker .2s infinite;
+}
+
+@keyframes lightningFlicker {
+  0%   { box-shadow: 0 0 25px #00bfff; }
+  50%  { box-shadow: 0 0 60px #ffffff; }
+  100% { box-shadow: 0 0 25px #00bfff; }
+}
+.glass-card {
+  animation: fadeUp .8s ease, breathe 6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+/* page transition effect */
+body {
+  opacity: 0;
+  transition: opacity .7s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
