@@ -18,13 +18,18 @@ body {
   font-family:'Montserrat',sans-serif;
   color: #fff;
   background: #000;
-  overflow: hidden;         /* ❗ no scrolling — cinematic */
+
+  /* ✨ NO SCROLL + FIXED HEIGHT (removes gap) */
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100vh;
+
   transition: opacity .7s ease-out;
   opacity: 0;
   transform-style: preserve-3d;
 }
 
-/* Show page after loading */
+/* Fade-in after load */
 body.loaded { opacity: 1; }
 
 /* ===========================================================
@@ -35,9 +40,13 @@ nav {
   width: 100%;
   top: 0;
   z-index: 200;
-  padding: 1rem 0;
+
+  /* 🔧 Reduced padding so it doesn't push content down */
+  padding: 0.6rem 0;
+
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(10px);
+
   animation: floatNav 4s ease-in-out infinite alternate;
 }
 
@@ -89,7 +98,7 @@ nav a.electric {
 }
 
 /* ===========================================================
-   VIDEO BACKGROUND LAYERS (supports parallax)
+   BACKGROUND VIDEO
    =========================================================== */
 .video-section,
 #hero-video,
@@ -104,7 +113,7 @@ nav a.electric {
   will-change: transform;
 }
 
-/* overlay for readability */
+/* overlay */
 .page-overlay {
   position: fixed;
   inset: 0;
@@ -113,19 +122,24 @@ nav a.electric {
 }
 
 /* ===========================================================
-   GLASS CARD
+   GLASS CARD (MAIN HERO)
    =========================================================== */
 .glass-card {
   max-width: 980px;
-  margin: 26vh auto;
+
+  /* 🔧 FIXED: removed gap by reducing margin-top */
+  margin: 18vh auto;
+
   padding: 70px 60px;
   background: var(--glass-bg);
   backdrop-filter: blur(20px) saturate(160%);
   border-radius: 22px;
   text-align: center;
+
   box-shadow: 0 0 45px rgba(0,191,255,0.25);
   z-index: 50;
   position: relative;
+
   animation: fadeUp .8s ease;
 }
 
@@ -152,7 +166,7 @@ nav a.electric {
   text-shadow: 0 0 20px rgba(0,191,255,0.8);
 }
 
-/* SHINING HEADER TEXT */
+/* SHINING HEADER */
 .text-shine {
   background: linear-gradient(90deg, #fff, var(--accent), #fff);
   background-size: 200%;
@@ -167,7 +181,7 @@ nav a.electric {
 }
 
 /* ===========================================================
-   SPARK EFFECT (click)
+   SPARK CLICK ANIMATION
    =========================================================== */
 .spark {
   position: fixed;
@@ -187,16 +201,17 @@ nav a.electric {
 }
 
 /* ===========================================================
-   WORKS PAGE GRID + CARDS
+   WORKS PAGE – GRID + CARDS
    =========================================================== */
 .works-container {
   max-width: 1200px;
-  margin: 0 auto;
-  margin-top: 22vh;
+  margin: 22vh auto 0 auto;
   padding: 20px;
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2.7rem;
+
   z-index: 30;
   position: relative;
 }
@@ -207,6 +222,7 @@ nav a.electric {
   backdrop-filter: blur(18px);
   overflow: hidden;
   cursor: pointer;
+
   box-shadow: 0 12px 45px rgba(0,191,255,0.18);
   transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .35s;
 }
@@ -258,7 +274,7 @@ nav a.electric {
   nav a { font-size: 0.95rem; }
 
   .glass-card {
-    margin: 14vh 18px;
+    margin: 15vh 18px;
     padding: 38px 24px;
   }
 
