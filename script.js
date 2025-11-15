@@ -1,11 +1,9 @@
-// Fade-in on page load
+// Fade-in animation on load
 window.addEventListener("load", () => {
     document.body.classList.add("loaded");
 });
 
-// -------------------------------------------------------
-// Electric hover for navbar
-// -------------------------------------------------------
+// Electric hover effect on navbar
 document.querySelectorAll("nav a").forEach(a => {
     a.addEventListener("mouseenter", () => {
         a.classList.add("electric");
@@ -13,10 +11,8 @@ document.querySelectorAll("nav a").forEach(a => {
     });
 });
 
-// -------------------------------------------------------
-// Spark click effect
-// -------------------------------------------------------
-document.addEventListener("click", e => {
+// Click spark effect
+document.addEventListener("click", (e) => {
     const s = document.createElement("span");
     s.className = "spark";
     s.style.left = `${e.clientX}px`;
@@ -25,22 +21,13 @@ document.addEventListener("click", e => {
     setTimeout(() => s.remove(), 600);
 });
 
-// -------------------------------------------------------
-// Smooth parallax (very soft, no camera shaking)
-// -------------------------------------------------------
+// Parallax cursor movement
 document.addEventListener("mousemove", (e) => {
-    const video = document.querySelector("#hero-video, #bg-video");
+    const video = document.getElementById("hero-video");
     if (!video) return;
 
-    const x = (e.clientX / window.innerWidth - 0.5) * 6;  
-    const y = (e.clientY / window.innerHeight - 0.5) * 6;
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
 
-    video.style.transform = `translate(${x}px, ${y}px) scale(1.03)`; 
-});
-
-// Reset when mouse leaves window
-document.addEventListener("mouseleave", () => {
-    const video = document.querySelector("#hero-video, #bg-video");
-    if (!video) return;
-    video.style.transform = `translate(0px, 0px) scale(1)`;
+    video.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
 });
