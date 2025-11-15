@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About Me | Adhitya Raman</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<!-- Background Video -->
-<video autoplay muted loop playsinline id="bg-video">
-  <source src="gear5_preview.mp4" type="video/mp4">
-</video>
+  <!-- Gear5 Background (about) -->
+  <video id="bg-video" autoplay muted loop playsinline preload="auto">
+    <source src="gear5_preview.mp4" type="video/mp4">
+    Your browser doesn't support video.
+  </video>
 
-<div class="page-overlay"></div>
+  <div class="page-overlay"></div>
 
-<!-- Navigation -->
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a class="active" href="about.html">About Me</a></li>
-    <li><a href="works.html">My Works</a></li>
-    <li><a href="hobbies.html">Hobbies</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
+  <!-- Nav -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a class="active" href="about.html">About Me</a></li>
+      <li><a href="works.html">My Works</a></li>
+      <li><a href="hobbies.html">Hobbies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-<!-- Glass Section -->
-<section class="glass-card">
-  <h1>Greetings</h1>
+  <!-- About Glass Card -->
+  <section class="glass-card">
+    <h1 class="text-shine">Greetings</h1>
 
-  <p>Hey there 👋 I'm <strong>Adhitya Raman</strong> — an aspiring cloud architect exploring AWS and GCP. I love solving problems and building scalable, secure solutions.</p>
+    <p>Hey there 👋 I'm <strong>Adhitya Raman</strong> — an aspiring cloud architect exploring AWS and GCP. I love solving problems and building scalable, secure solutions.</p>
 
-  <p>I'm passionate about cloud computing, UI/UX design, and cybersecurity. I’ve built a <strong>UAV Drone System</strong> that combines three algorithms into a hybrid model for secure communication and obstacle detection.</p>
+    <p>I'm passionate about cloud computing, UI/UX design, and cybersecurity. I’ve built a <strong>UAV Drone System</strong> that combines three algorithms into a hybrid model for secure communication and obstacle detection.</p>
 
-  <p>Outside of tech, I enjoy reading, listening to music across genres, and spending quiet time meditating or visiting temples for peace of mind.</p>
-</section>
+    <p>Outside of tech, I enjoy reading, listening to music across genres, and spending quiet time meditating or visiting temples for peace of mind.</p>
+  </section>
 
-<script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
