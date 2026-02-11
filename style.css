@@ -398,4 +398,22 @@ nav a.electric {
   .glass-card h1 { font-size: 1.7rem !important; }
   .glass-card p { font-size: 0.95rem !important; }
 }
+.tech-stack {
+  margin-top: 10px;
+}
+
+.tech-stack span {
+  background: rgba(255,255,255,0.15);
+  padding: 5px 10px;
+  margin: 3px;
+  border-radius: 20px;
+  font-size: 12px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.tech-stack span:hover {
+  background: rgba(255,255,255,0.3);
+}
+
 
